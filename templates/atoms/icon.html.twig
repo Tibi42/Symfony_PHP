@@ -1,0 +1,60 @@
+{# Icon Atom Component #}
+{% set name = name|default('') %}
+{% set size = size|default('medium') %}
+{% set color = color|default('inherit') %}
+{% set classes = classes|default('') %}
+
+<span class="icon icon--{{ size }} icon--{{ color }} {{ classes }}" aria-hidden="true">
+	{% if name == 'home' %}🏠
+		{% elseif name == 'list' %}📋
+		{% elseif name == 'document' %}📄
+		{% elseif name == 'box' %}📦
+		{% elseif name == 'elephant' %}🐘
+		{% elseif name == 'arrow-down' %}▼
+		{% elseif name == 'arrow-right' %}→
+	{% else %}
+		{{ name }}
+	{% endif %}
+</span>
+
+<style>
+	.icon {
+		display: inline-block;
+		line-height: 1;
+		vertical-align: middle;
+	}
+
+	/* Sizes */
+	.icon--small {
+		font-size: 12px;
+	}
+
+	.icon--medium {
+		font-size: 16px;
+	}
+
+	.icon--large {
+		font-size: 24px;
+	}
+
+	.icon--xlarge {
+		font-size: 32px;
+	}
+
+	/* Colors */
+	.icon--white {
+		color: white;
+	}
+
+	.icon--muted {
+		color: #ccc;
+	}
+
+	.icon--accent {
+		color: #FF69B4;
+	}
+
+	.icon--primary {
+		color: #8A2BE2;
+	}
+</style>

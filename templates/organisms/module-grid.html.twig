@@ -1,0 +1,87 @@
+{# Module Grid Organism Component #}
+{% set modules = modules|default([
+    {
+        'number': '1',
+        'title': 'Variables et Types de Données',
+        'description': 'Apprenez les fondamentaux des variables et des différents types de données en PHP.',
+        'linkHref': '#'
+    },
+    {
+        'number': '2',
+        'title': 'Structures de Contrôle',
+        'description': 'Maîtrisez les conditions, boucles et autres structures de contrôle.',
+        'linkHref': '#'
+    },
+    {
+        'number': '3',
+        'title': 'Fonctions',
+        'description': 'Créez et utilisez des fonctions pour organiser votre code.',
+        'linkHref': '#'
+    },
+    {
+        'number': '4',
+        'title': 'Tableaux',
+        'description': 'Découvrez la puissance des tableaux et leurs manipulations.',
+        'linkHref': '#'
+    },
+    {
+        'number': '5',
+        'title': 'Programmation Orientée Objet',
+        'description': 'Plongez dans la programmation orientée objet avec PHP.',
+        'linkHref': '#'
+    },
+    {
+        'number': '6',
+        'title': 'Gestion des Erreurs',
+        'description': 'Apprenez à gérer les erreurs et exceptions efficacement.',
+        'linkHref': '#'
+    },
+    {
+        'number': '7',
+        'title': 'Travail avec les Fichiers',
+        'description': 'Manipulez les fichiers et le système de fichiers.',
+        'linkHref': '#'
+    },
+    {
+        'number': '8',
+        'title': 'Sessions et Cookies',
+        'description': 'Gérez les sessions utilisateur et les cookies.',
+        'linkHref': '#'
+    },
+    {
+        'number': '9',
+        'title': 'Introduction aux Bases de Données avec PDO',
+        'description': 'Connectez-vous aux bases de données avec PDO.',
+        'linkHref': '#'
+    }
+]) %}
+{% set classes = classes|default('') %}
+
+<div class="modules-grid {{ classes }}">
+	{% for module in modules %}
+		{% include 'molecules/module-card.html.twig' with {
+            'number': module.number|default(''),
+            'title': module.title|default(''),
+            'description': module.description|default(''),
+            'linkHref': module.linkHref|default('#'),
+            'linkText': module.linkText|default('En savoir plus →')
+        } %}
+	{% endfor %}
+</div>
+
+<style>
+	.modules-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 24px;
+		max-width: 1200px;
+	}
+
+	/* Responsive */
+	@media(max-width: 768px) {
+		.modules-grid {
+			grid-template-columns: 1fr;
+			gap: 16px;
+		}
+	}
+</style>

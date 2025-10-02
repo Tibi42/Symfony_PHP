@@ -1,0 +1,55 @@
+{# Card Atom Component #}
+{% set classes = classes|default('') %}
+{% set hover = hover|default(true) %}
+{% set footer = footer|default('') %}
+
+<div class="card {{ hover ? 'card--hover' : '' }} {{ classes }}">
+	{% if header %}
+		<div class="card__header">
+			{{ header|raw }}
+		</div>
+	{% endif %}
+
+	{% if body %}
+		<div class="card__body">
+			{{ body|raw }}
+		</div>
+	{% endif %}
+
+	{% if footer %}
+		<div class="card__footer">
+			{{ footer|raw }}
+		</div>
+	{% endif 
+%}
+
+	{% block content %}{% endblock %}
+</div>
+<style>
+	.card {
+		background: white;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.card--hover:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	}
+
+	.card__header {
+		padding: 20px;
+	}
+
+	.card__body {
+		padding: 20px;
+		color: #333;
+	}
+
+	.card__footer {
+		padding: 20px;
+		border-top: 1px solid #eee;
+	}
+</style>

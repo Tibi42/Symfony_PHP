@@ -1,0 +1,33 @@
+{# Main Content Organism Component #}
+{% set title = title|default('') %}
+{% set content = content|default('') %}
+{% set classes = classes|default('') %}
+{% set showHero = showHero|default(true) %}
+
+<main class="main-content {{ classes }}">
+	{% if showHero %}
+		<div class="hero-banner">
+			<div class="hero-banner__content">
+				<h1 class="hero-banner__title">Les Bases de PHP</h1>
+				<p class="hero-banner__subtitle">
+					Bienvenue sur votre site dédié à l'<span class="hero-banner__accent">apprentissage des bases de PHP</span>
+				</p>
+			</div>
+		</div>
+	{% endif %}
+
+	{% if title %}
+		<header class="main-header">
+			{% include 'atoms/typography.html.twig' with {
+                'tag': 'h1',
+                'variant': 'h1',
+                'color': 'primary',
+                'content': title
+            } %}
+		</header>
+	{% endif %}
+
+	<div class="main-body">
+		{{ content|raw }}
+	</div>
+</main>

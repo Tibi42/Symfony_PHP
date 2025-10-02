@@ -1,0 +1,27 @@
+{# Home Template #}
+{% set title = title|default('PHP Learning - Accueil') %}
+{% set sidebar = sidebar|default({}) %}
+{% set mainContent = mainContent|default('') %}
+{% set classes = classes|default('') %}
+
+<div class="app-container {{ classes }}">
+	{% include 'organisms/sidebar.html.twig' with sidebar %}
+
+	{% include 'organisms/main-content.html.twig' with {
+        'content': mainContent
+    } %}
+</div>
+
+<style>
+	.app-container {
+		display: flex;
+		min-height: 100vh;
+	}
+
+	/* Responsive */
+	@media(max-width: 768px) {
+		.app-container {
+			flex-direction: column;
+		}
+	}
+</style>

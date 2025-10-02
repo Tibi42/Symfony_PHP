@@ -1,0 +1,63 @@
+{# Logo Molecule Component #}
+{% set icon = icon|default('elephant') %}
+{% set title = title|default('PHP Learning') %}
+{% set subtitle = subtitle|default('Maîtrisez les bases de PHP') %}
+{% set classes = classes|default('') %}
+
+<div class="logo {{ classes }}">
+	<div class="logo__main">
+		{% include 'atoms/icon.html.twig' with {
+            'name': icon,
+            'size': 'large',
+            'color': 'white',
+            'classes': 'logo-icon'
+        } %}
+
+		{% include 'atoms/typography.html.twig' with {
+            'tag': 'span',
+            'variant': 'h3',
+            'color': 'primary',
+            'classes': 'logo-title',
+            'content': title
+        } %}
+	</div>
+
+	{% if subtitle %}
+		{% include 'atoms/typography.html.twig' with {
+            'tag': 'div',
+            'variant': 'caption',
+            'color': 'secondary',
+            'classes': 'logo-subtitle',
+            'content': subtitle
+        } %}
+	{% endif %}
+</div>
+
+<style>
+	.logo {
+		margin-bottom: 10px;
+	}
+
+	.logo__main {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+
+	.logo-icon {
+		margin-right: 10px;
+	}
+
+	.logo-title {
+		font-size: 24px;
+		font-weight: bold;
+		color: white;
+		margin: 0;
+	}
+
+	.logo-subtitle {
+		font-size: 14px;
+		color: #ccc;
+		margin: 0;
+	}
+</style>

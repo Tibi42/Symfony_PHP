@@ -1,0 +1,31 @@
+{# Sidebar Organism Component #}
+{% set logo = logo|default({
+    'icon': 'elephant',
+    'title': 'PHP Learning',
+    'subtitle': 'Maîtrisez les bases de PHP'
+}) %}
+{% set navigationItems = navigationItems|default([
+    {'icon': 'home', 'text': 'Accueil', 'href': '#', 'active': true},
+    {'icon': 'list', 'text': 'Programme', 'href': '#', 'hasDropdown': true},
+    {'icon': 'document', 'text': 'Exercices', 'href': '#', 'hasDropdown': true},
+    {'icon': 'box', 'text': 'Ressources', 'href': '#'}
+]) %}
+{% set classes = classes|default('') %}
+
+<nav class="sidebar {{ classes }}">
+	<div class="sidebar-header">
+		{% include 'molecules/logo.html.twig' with logo %}
+	</div>
+
+	<ul class="nav-menu">
+		{% for item in navigationItems %}
+			{% include 'molecules/navigation-item.html.twig' with {
+                'href': item.href|default('#'),
+                'icon': item.icon|default(''),
+                'text': item.text|default(''),
+                'active': item.active|default(false),
+                'hasDropdown': item.hasDropdown|default(false)
+            } %}
+		{% endfor %}
+	</ul>
+</nav>
