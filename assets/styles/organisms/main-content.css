@@ -1,0 +1,24 @@
+/* ============================================
+   MAIN CONTENT ORGANISM COMPONENT
+   ============================================ */
+.main-content {
+    flex: 1;
+    background-color: #2a2a2a;
+    overflow-y: auto;
+}
+
+.main-header {
+    margin-bottom: 32px;
+}
+
+.main-body {
+    width: 100%;
+    padding: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-body {
+        padding: 20px;
+    }
+}

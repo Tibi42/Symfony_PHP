@@ -1,0 +1,29 @@
+/* ============================================
+   SIDEBAR ORGANISM COMPONENT
+   ============================================ */
+.sidebar {
+    width: 25%;
+    min-width: 250px;
+    background-color: #3f3d56;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    margin-bottom: 40px;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        min-width: auto;
+    }
+}

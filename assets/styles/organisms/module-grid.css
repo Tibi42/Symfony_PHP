@@ -1,0 +1,17 @@
+/* ============================================
+   MODULE GRID ORGANISM COMPONENT
+   ============================================ */
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modules-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
