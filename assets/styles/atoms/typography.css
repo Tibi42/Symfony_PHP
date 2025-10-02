@@ -1,0 +1,72 @@
+/* ============================================
+   TYPOGRAPHY ATOM COMPONENT
+   ============================================ */
+.typography {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Variants */
+.typography--h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.typography--h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+}
+
+.typography--h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+.typography--h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.typography--body {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.typography--caption {
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.typography--small {
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+/* Colors */
+.typography--primary {
+    color: white;
+}
+
+.typography--secondary {
+    color: #ccc;
+}
+
+.typography--dark {
+    color: #333;
+}
+
+.typography--muted {
+    color: #666;
+}
+
+.typography--accent {
+    color: #ff69b4;
+}

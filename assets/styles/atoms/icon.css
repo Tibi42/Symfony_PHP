@@ -1,0 +1,42 @@
+/* ============================================
+   ICON ATOM COMPONENT
+   ============================================ */
+.icon {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* Sizes */
+.icon--small {
+    font-size: 12px;
+}
+
+.icon--medium {
+    font-size: 16px;
+}
+
+.icon--large {
+    font-size: 24px;
+}
+
+.icon--xlarge {
+    font-size: 32px;
+}
+
+/* Colors */
+.icon--white {
+    color: white;
+}
+
+.icon--muted {
+    color: #ccc;
+}
+
+.icon--accent {
+    color: #ff69b4;
+}
+
+.icon--primary {
+    color: #8a2be2;
+}
