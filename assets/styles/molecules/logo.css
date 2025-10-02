@@ -1,0 +1,29 @@
+/* ============================================
+   LOGO MOLECULE COMPONENT
+   ============================================ */
+.logo {
+    margin-bottom: 10px;
+}
+
+.logo__main {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo-icon {
+    margin-right: 10px;
+}
+
+.logo-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+.logo-subtitle {
+    font-size: 14px;
+    color: #ccc;
+    margin: 0;
+}
