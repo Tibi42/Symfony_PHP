@@ -4,10 +4,17 @@
 {% set text = text|default('') %}
 {% set active = active|default(false) %}
 {% set hasDropdown = hasDropdown|default(false) %}
+{% set dropdownItems = dropdownItems|default([]) %}
 {% set classes = classes|default('') %}
 
-<li class="nav-item">
-	<a href="{{ href }}" class="nav-link {{ active ? 'nav-link--active' : '' }} {{ classes }}">
+<li class="nav-item {{ hasDropdown ? 'nav-item--dropdown' : '' }}">
+	<a href="{{ href }}" 
+       class="nav-link {{ active ? 'nav-link--active' : '' }} {{ classes }}" 
+       {% if hasDropdown %}
+           data-controller="dropdown"
+           data-action="click->dropdown#toggle"
+           data-dropdown-toggle
+       {% endif %}>
 		{% if icon %}
 			{% include 'atoms/icon.html.twig' with {
                 'name': icon,
@@ -36,6 +43,26 @@
             } %}
 		{% endif %}
 	</a>
+
+	{% if hasDropdown and dropdownItems|length > 0 %}
+		<ul class="nav-dropdown">
+			{% for item in dropdownItems %}
+				<li class="nav-dropdown-item">
+					<a href="{{ item.href|default('#') }}" class="nav-dropdown-link">
+						{% if item.icon %}
+							{% include 'atoms/icon.html.twig' with {
+								'name': item.icon,
+								'size': 'small',
+								'color': 'muted',
+								'classes': 'nav-dropdown-icon'
+							} %}
+						{% endif %}
+						<span class="nav-dropdown-text">{{ item.text|default('') }}</span>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
 </li>
 
 <style>
@@ -53,6 +80,7 @@
 		border-radius: 8px;
 		transition: background-color 0.3s;
 		position: relative;
+		cursor: pointer;
 	}
 
 	.nav-link:hover {
@@ -84,5 +112,66 @@
 
 	.nav-arrow {
 		font-size: 12px;
+		transition: transform 0.3s ease;
+	}
+
+	/* Styles pour les éléments avec dropdown */
+	.nav-item--dropdown .nav-arrow {
+		transform: rotate(0deg);
+	}
+
+	.nav-item--dropdown.open .nav-arrow {
+		transform: rotate(180deg);
+	}
+
+	/* Styles pour la liste déroulante */
+	.nav-dropdown {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		background-color: rgba(0, 0, 0, 0.2);
+		border-radius: 8px;
+		margin-top: 8px;
+		overflow: hidden;
+		max-height: 0;
+		opacity: 0;
+		transform: translateY(-10px);
+		transition: all 0.3s ease;
+	}
+
+	.nav-item--dropdown.open .nav-dropdown {
+		max-height: 300px;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.nav-dropdown-item {
+		margin: 0;
+	}
+
+	.nav-dropdown-link {
+		display: flex;
+		align-items: center;
+		padding: 10px 16px 10px 40px;
+		color: rgba(255, 255, 255, 0.8);
+		text-decoration: none;
+		font-size: 14px;
+		transition: all 0.3s ease;
+		border-left: 3px solid transparent;
+	}
+
+	.nav-dropdown-link:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+		color: white;
+		border-left-color: #FF69B4;
+	}
+
+	.nav-dropdown-icon {
+		margin-right: 8px;
+		font-size: 12px;
+	}
+
+	.nav-dropdown-text {
+		flex: 1;
 	}
 </style>

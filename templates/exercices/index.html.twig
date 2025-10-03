@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Analyseur de Performance Commerciale -
+	{{ nom_entreprise }}
+{% endblock %}
+
+{% block body %}
+	{% include 'templates/home-template.html.twig' with {
+        'sidebar': sidebar,
+        'mainContent': include('exercices/exercices-content.html.twig', {
+            'nom_entreprise': nom_entreprise,
+            'periode': periode,
+            'taux_tva': taux_tva,
+            'prime_objectif': prime_objectif,
+            'analyses_vendeurs': analyses_vendeurs,
+            'total_ventes_equipe': total_ventes_equipe,
+            'total_objectifs': total_objectifs,
+            'taux_realisation_equipe': taux_realisation_equipe,
+            'nb_performants': nb_performants,
+            'nb_difficulte': nb_difficulte,
+            'nb_total_vendeurs': nb_total_vendeurs,
+            'status_equipe': status_equipe,
+            'action_prioritaire': action_prioritaire,
+            'budget_formation': budget_formation
+        })
+    } %}
+{% endblock %}

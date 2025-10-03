@@ -7,7 +7,17 @@
 {% set navigationItems = navigationItems|default([
     {'icon': 'home', 'text': 'Accueil', 'href': '#', 'active': true},
     {'icon': 'list', 'text': 'Programme', 'href': '#', 'hasDropdown': true},
-    {'icon': 'document', 'text': 'Exercices', 'href': '#', 'hasDropdown': true},
+    {
+        'icon': 'document', 
+        'text': 'Exercices', 
+        'href': '#', 
+        'hasDropdown': true,
+        'dropdownItems': [
+            {'icon': 'play', 'text': 'Exercices de base', 'href': '/exercices'},
+            {'icon': 'code', 'text': 'Exercices avancés', 'href': '/exercices/avances'},
+            {'icon': 'check', 'text': 'Corrections', 'href': '/exercices/corrections'}
+        ]
+    },
     {'icon': 'box', 'text': 'Ressources', 'href': '#'}
 ]) %}
 {% set classes = classes|default('') %}
@@ -24,7 +34,8 @@
                 'icon': item.icon|default(''),
                 'text': item.text|default(''),
                 'active': item.active|default(false),
-                'hasDropdown': item.hasDropdown|default(false)
+                'hasDropdown': item.hasDropdown|default(false),
+                'dropdownItems': item.dropdownItems|default([])
             } %}
 		{% endfor %}
 	</ul>

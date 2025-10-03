@@ -14,7 +14,19 @@
         'navigationItems': [
             {'icon': 'home', 'text': 'Accueil', 'href': '#', 'active': true},
             {'icon': 'list', 'text': 'Programme', 'href': '#', 'hasDropdown': true},
-            {'icon': 'document', 'text': 'Exercices', 'href': '#', 'hasDropdown': true},
+            {
+                'icon': 'document', 
+                'text': 'Exercices', 
+                'href': '#', 
+                'hasDropdown': true,
+                'dropdownItems': [
+                    {
+                        'icon': 'Exercices 5',
+                        'text': 'Analyseur de Performance Commerciale',
+                        'href': path('app_exercices')
+                    },
+                ]
+            },
             {'icon': 'box', 'text': 'Ressources', 'href': '#'}
         ]
     },
@@ -24,7 +36,8 @@
                 'number': '1',
                 'title': 'Variables et Types de Données',
                 'description': 'Apprenez les fondamentaux des variables et des différents types de données en PHP.',
-                'linkHref': 'https://www.php.net/manual/fr/language.variables.php'
+                'linkHref': 'https://www.php.net/manual/fr/language.variables.php',
+                
             },
             {
                 'number': '2',

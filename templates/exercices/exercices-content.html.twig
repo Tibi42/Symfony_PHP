@@ -1,0 +1,432 @@
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		min-height: 100vh;
+	}
+
+	.header {
+		text-align: center;
+		background: rgba(255, 255, 255, 0.95);
+		padding: 30px;
+		border-radius: 15px;
+		margin-bottom: 30px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	}
+
+	.header h1 {
+		color: #2c3e50;
+		font-size: 2.5em;
+		margin: 0 0 10px;
+		font-weight: 700;
+	}
+
+	.subtitle {
+		color: #7f8c8d;
+		font-size: 1.2em;
+		font-weight: 500;
+	}
+
+	.info-section {
+		background: rgba(255, 255, 255, 0.95);
+		padding: 25px;
+		border-radius: 15px;
+		margin-bottom: 30px;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.info-section h2 {
+		color: #2c3e50;
+		margin-bottom: 20px;
+		font-size: 1.8em;
+	}
+
+	.info-section p {
+		margin: 10px 0;
+		font-size: 1.1em;
+		color: #34495e;
+	}
+
+	.vendeur-card {
+		background: rgba(255, 255, 255, 0.95);
+		border-radius: 15px;
+		padding: 25px;
+		margin-bottom: 25px;
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+		transition: transform 0.3s ease;
+	}
+
+	.vendeur-card:hover {
+		transform: translateY(-5px);
+	}
+
+	.vendeur-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+		padding-bottom: 15px;
+		border-bottom: 2px solid #ecf0f1;
+	}
+
+	.vendeur-name {
+		font-size: 1.8em;
+		font-weight: 700;
+		color: #2c3e50;
+	}
+
+	.vendeur-info {
+		display: flex;
+		gap: 15px;
+		align-items: center;
+	}
+
+	.statut-badge {
+		padding: 8px 16px;
+		border-radius: 20px;
+		font-weight: 600;
+		font-size: 0.9em;
+		text-transform: uppercase;
+	}
+
+	.statut-senior {
+		background: #3498db;
+		color: white;
+	}
+
+	.statut-junior {
+		background: #e74c3c;
+		color: white;
+	}
+
+	.statut-expert {
+		background: #f39c12;
+		color: white;
+	}
+
+	.anciennete {
+		background: #95a5a6;
+		color: white;
+		padding: 8px 16px;
+		border-radius: 20px;
+		font-weight: 600;
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 15px;
+		margin-bottom: 20px;
+	}
+
+	.stat-box {
+		background: #f8f9fa;
+		padding: 15px;
+		border-radius: 10px;
+		text-align: center;
+		border-left: 4px solid #3498db;
+	}
+
+	.stat-label {
+		font-size: 0.9em;
+		color: #7f8c8d;
+		margin-bottom: 8px;
+		font-weight: 600;
+	}
+
+	.stat-value {
+		font-size: 1.3em;
+		font-weight: 700;
+		color: #2c3e50;
+	}
+
+	.stat-value.positive {
+		color: #27ae60;
+	}
+
+	.stat-value.negative {
+		color: #e74c3c;
+	}
+
+	.stat-value.neutral {
+		color: #95a5a6;
+	}
+
+	.evaluation {
+		background: #ecf0f1;
+		padding: 20px;
+		border-radius: 10px;
+		text-align: center;
+	}
+
+	.evaluation-text {
+		font-size: 1.4em;
+		font-weight: 700;
+		margin-bottom: 10px;
+		color: #2c3e50;
+	}
+
+	.conseil {
+		font-size: 1.1em;
+		color: #7f8c8d;
+		font-style: italic;
+	}
+
+	.bilan-global {
+		background: rgba(255, 255, 255, 0.95);
+		padding: 30px;
+		border-radius: 15px;
+		margin-top: 30px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	}
+
+	.bilan-title {
+		font-size: 2em;
+		font-weight: 700;
+		color: #2c3e50;
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	.bilan-stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 20px;
+		margin-bottom: 30px;
+	}
+
+	.bilan-stat {
+		background: #f8f9fa;
+		padding: 20px;
+		border-radius: 10px;
+		text-align: center;
+		border-top: 4px solid #3498db;
+	}
+
+	.bilan-stat-label {
+		font-size: 1em;
+		color: #7f8c8d;
+		margin-bottom: 10px;
+		font-weight: 600;
+	}
+
+	.bilan-stat-value {
+		font-size: 1.8em;
+		font-weight: 700;
+		color: #2c3e50;
+	}
+
+	.status-equipe {
+		text-align: center;
+		font-size: 1.5em;
+		font-weight: 700;
+		color: #2c3e50;
+		background: #ecf0f1;
+		padding: 20px;
+		border-radius: 10px;
+		margin-bottom: 30px;
+	}
+
+	.actions {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 20px;
+	}
+
+	.action-item {
+		background: #f8f9fa;
+		padding: 20px;
+		border-radius: 10px;
+		text-align: center;
+	}
+
+	.action-label {
+		font-size: 1em;
+		color: #7f8c8d;
+		margin-bottom: 10px;
+		font-weight: 600;
+	}
+
+	.action-value {
+		font-size: 1.3em;
+		font-weight: 700;
+		color: #2c3e50;
+	}
+
+	@media(max-width: 768px) {
+		.container {
+			padding: 10px;
+		}
+
+		.header h1 {
+			font-size: 2em;
+		}
+
+		.vendeur-header {
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<div class="container">
+	<div class="header">
+		<h1>📊 Analyseur de Performance Commerciale</h1>
+		<div class="subtitle">{{ nom_entreprise }}
+			-
+			{{ periode }}</div>
+	</div>
+
+	<div class="info-section">
+		<h2>📈 Informations Générales</h2>
+		<p>
+			<strong>Entreprise:</strong>
+			{{ nom_entreprise }}</p>
+		<p>
+			<strong>Période:</strong>
+			{{ periode }}</p>
+		<p>
+			<strong>Taux TVA:</strong>
+			{{ (taux_tva * 100)|number_format(0) }}%</p>
+		<p>
+			<strong>Prime objectif:</strong>
+			{{ prime_objectif|number_format(2) }}€</p>
+	</div>
+
+	{% for nom, analyse in analyses_vendeurs %}
+		<div class="vendeur-card">
+			<div class="vendeur-header">
+				<div class="vendeur-name">{{ nom|upper }}</div>
+				<div class="vendeur-info">
+					<span class="statut-badge statut-{{ analyse.data.statut }}">{{ analyse.data.statut|title }}</span>
+					<span class="anciennete">{{ analyse.data.anciennete }}
+						ans</span>
+				</div>
+			</div>
+
+			<div class="stats-grid">
+				<div class="stat-box">
+					<div class="stat-label">Total Ventes HT</div>
+					<div class="stat-value {{ analyse.objectif_atteint ? 'positive' : 'negative' }}">{{ analyse.total_ventes|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Total Ventes TTC</div>
+					<div class="stat-value">{{ analyse.ventes_ttc|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Objectif</div>
+					<div class="stat-value">{{ analyse.data.objectif_mensuel|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Réalisation</div>
+					<div class="stat-value {{ analyse.taux_realisation >= 100 ? 'positive' : (analyse.taux_realisation >= 90 ? 'neutral' : 'negative') }}">{{ analyse.taux_realisation|number_format(1) }}%</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Moyenne/Vente</div>
+					<div class="stat-value">{{ analyse.moyenne_vente|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Vente Min</div>
+					<div class="stat-value">{{ analyse.vente_min|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Vente Max</div>
+					<div class="stat-value">{{ analyse.vente_max|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Nb Ventes</div>
+					<div class="stat-value">{{ analyse.nb_ventes }}</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Commission</div>
+					<div class="stat-value">{{ analyse.commission_brute|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Prime</div>
+					<div class="stat-value {{ analyse.prime > 0 ? 'positive' : 'neutral' }}">{{ analyse.prime|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Bonus</div>
+					<div class="stat-value {{ analyse.bonus_anciennete > 0 ? 'positive' : 'neutral' }}">{{ analyse.bonus_anciennete|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Malus</div>
+					<div class="stat-value {{ analyse.malus > 0 ? 'negative' : 'neutral' }}">{{ analyse.malus|number_format(2) }}€</div>
+				</div>
+
+				<div class="stat-box">
+					<div class="stat-label">Rémunération Totale</div>
+					<div class="stat-value positive">{{ analyse.remuneration_totale|number_format(2) }}€</div>
+				</div>
+			</div>
+
+			<div class="evaluation">
+				<div class="evaluation-text">{{ analyse.evaluation }}</div>
+				<div class="conseil">{{ analyse.conseil }}</div>
+			</div>
+		</div>
+	{% endfor %}
+
+	<div class="bilan-global">
+		<div class="bilan-title">📊 Bilan Global Équipe</div>
+
+		<div class="bilan-stats">
+			<div class="bilan-stat">
+				<div class="bilan-stat-label">CA Total</div>
+				<div class="bilan-stat-value">{{ total_ventes_equipe|number_format(2) }}€</div>
+			</div>
+
+			<div class="bilan-stat">
+				<div class="bilan-stat-label">Objectifs Totaux</div>
+				<div class="bilan-stat-value">{{ total_objectifs|number_format(2) }}€</div>
+			</div>
+
+			<div class="bilan-stat">
+				<div class="bilan-stat-label">Réalisation Équipe</div>
+				<div class="bilan-stat-value">{{ taux_realisation_equipe|number_format(1) }}%</div>
+			</div>
+
+			<div class="bilan-stat">
+				<div class="bilan-stat-label">Vendeurs Performants</div>
+				<div class="bilan-stat-value">{{ nb_performants }}/{{ nb_total_vendeurs }}</div>
+			</div>
+
+			<div class="bilan-stat">
+				<div class="bilan-stat-label">En Difficulté</div>
+				<div class="bilan-stat-value">{{ nb_difficulte }}/{{ nb_total_vendeurs }}</div>
+			</div>
+		</div>
+
+		<div class="status-equipe">{{ status_equipe }}</div>
+
+		<div class="actions">
+			<div class="action-item">
+				<div class="action-label">Action Prioritaire</div>
+				<div class="action-value">{{ action_prioritaire }}</div>
+			</div>
+
+			<div class="action-item">
+				<div class="action-label">Budget Formation</div>
+				<div class="action-value">{{ budget_formation|number_format(0) }}€</div>
+			</div>
+		</div>
+	</div>
+</div>
